@@ -1,0 +1,889 @@
+/* Import Font: Inter untuk dasar, Bodoni Moda untuk elemen serif / angka */
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Inter:wght@400;500;700;900&display=swap');
+
+/* =========================================
+   MENGHILANGKAN TAMPILAN SCROLLBAR
+   ========================================= */
+/* Untuk Chrome, Safari, dan Opera */
+::-webkit-scrollbar {
+    display: none;
+}
+
+/* Untuk Firefox, IE, dan Edge */
+html,
+body {
+    -ms-overflow-style: none;
+    /* IE dan Edge */
+    scrollbar-width: none;
+    /* Firefox */
+
+    /* Tambahan agar tidak bisa tergeser ke samping (horizontal) */
+    overflow-x: hidden;
+}
+
+/* =========================================
+   DASAR & RESET
+   ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: linear-gradient(180deg, #F3F4F7 0%, #EAE4EC 100%);
+    font-family: 'Inter', sans-serif;
+    color: #444;
+}
+
+/* =========================================
+   BAGIAN 1: HERO SECTION
+   ========================================= */
+.hero-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    padding: 40px 5%;
+}
+
+header,
+footer {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    font-size: 13px;
+    letter-spacing: 0.2px;
+}
+
+.left {
+    justify-self: start;
+}
+
+.right {
+    justify-self: end;
+}
+
+header .center {
+    justify-self: center;
+    font-weight: 700;
+    font-size: 16px;
+    color: #000;
+}
+
+footer .center {
+    justify-self: center;
+    font-weight: 500;
+}
+
+.main-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.portfolio-logo {
+    width: 100%;
+    max-width: 1000px;
+    height: auto;
+}
+
+/* =========================================
+   BAGIAN 2: ABOUT SECTION
+   ========================================= */
+.about-section {
+    min-height: 100vh;
+    padding: 80px 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+    max-width: 1300px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.about-section p {
+    font-size: 18px;
+    line-height: 1.8;
+    margin-bottom: 28px;
+    color: #444;
+}
+
+.text-bold {
+    font-weight: 700;
+    color: #222;
+    font-size: 20px;
+}
+
+.hello-img {
+    width: 100%;
+    max-width: 850px;
+    height: auto;
+    margin-bottom: 10px;
+    display: block;
+}
+
+/* =========================================
+   PENGATURAN UKURAN PNG JUDUL (CONTACT, EXPERIENCE, TOOLS)
+   ========================================= */
+.title-contact,
+.title-experience,
+.title-tools {
+    width: 100%;
+    height: auto;
+    margin-top: 50px;
+    margin-bottom: 28px;
+    display: block;
+}
+
+.title-contact {
+    max-width: 160px;
+}
+
+.title-experience {
+    max-width: 220px;
+}
+
+.title-tools {
+    max-width: 130px;
+}
+
+/* =========================================
+   STYLING KONTEN ABOUT
+   ========================================= */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 70px 1fr;
+    column-gap: 24px;
+    row-gap: 16px;
+    font-weight: 700;
+    font-size: 18px;
+    color: #000;
+}
+
+.list-item {
+    margin-bottom: 40px;
+}
+
+.list-item h4 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 12px;
+}
+
+.list-item p {
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 0;
+}
+
+.tools-container {
+    display: flex;
+    gap: 24px;
+    margin-top: 16px;
+}
+
+.tool-icon {
+    width: 56px;
+    height: 56px;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+/* =========================================
+   BAGIAN 3: SELECTED WORKS (DARK MODE)
+   ========================================= */
+.works-section {
+
+    background-color: #070913;
+    color: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 5%;
+    position: relative;
+    /* PENTING: Agar posisi gambar mengikuti pinggir layar penuh */
+    overflow: hidden;
+    /* PENTING: Menutupi gambar jika kebesaran agar web tidak bisa discroll ke samping */
+}
+
+/* Lapisan khusus untuk efek glow animasi ditambahkan di sini */
+.works-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+        radial-gradient(circle at top left, rgba(18, 43, 115, 0.8) 0%, transparent 45%),
+        radial-gradient(circle at bottom right, rgba(18, 43, 115, 0.6) 0%, transparent 45%);
+    z-index: 0;
+    animation: glowBreathing 4s ease-in-out infinite alternate;
+}
+
+/* Keyframes untuk animasi glow */
+@keyframes glowBreathing {
+    0% {
+        opacity: 0.4;
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1.15);
+    }
+}
+
+.works-container {
+    width: 100%;
+    max-width: 1300px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: stretch;
+    /* position dan z-index dihapus agar gambar bisa bebas ke pinggir layar */
+}
+
+.works-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 50px;
+    column-gap: 40px;
+    position: relative;
+    z-index: 2;
+}
+
+.work-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.work-item:nth-child(4) {
+    transform: translateX(60%);
+}
+
+.work-number {
+    font-family: 'Bodoni Moda', serif;
+    font-style: italic;
+    font-size: 90pt;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1;
+    margin-bottom: 16px;
+    letter-spacing: -2px;
+}
+
+.work-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: -0.3px;
+}
+
+.work-desc {
+    font-size: 9pt;
+    font-weight: 400;
+    color: #a0a5b5;
+    line-height: 1.6;
+}
+
+.works-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding-bottom: 40px;
+}
+
+.selected-text,
+.works-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 110px;
+    font-weight: 900;
+    letter-spacing: -4px;
+    line-height: 0.9;
+    color: #ffffff;
+    position: relative;
+    z-index: 2;
+}
+
+.works-text {
+    margin-right: -10px;
+}
+
+/* GAMBAR TANDA TANYA DI POJOK BAWAH (KEPOTONG) */
+.pattern-bg {
+    position: absolute;
+    bottom: -50px;
+    /* Angka minus mendorong gambar ke luar bawah layar */
+    right: 0px;
+    /* Angka minus mendorong gambar ke luar kanan layar */
+    width: 350px;
+    /* Diperbesar agar lebih terlihat */
+    max-width: none;
+    /* Mematikan batas maksimal agar bebas */
+    z-index: 1;
+    object-fit: contain;
+    opacity: 0.9;
+}
+
+/* =========================================
+   EFEK LINK SCROLL ANIMASI
+   ========================================= */
+.link-scroll {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.link-scroll:hover {
+    opacity: 0.5;
+    /* Saat mouse diarahkan, teks agak transparan sedikit */
+}
+
+/* =========================================
+   RESPONSIVITAS (MOBILE & TABLET) - DIGABUNG JADI SATU
+   ========================================= */
+@media (max-width: 900px) {
+
+    .hero-section,
+    .about-section,
+    .works-section {
+        padding: 40px 24px;
+    }
+
+    .content-grid,
+    .works-container {
+        grid-template-columns: 1fr;
+        gap: 60px;
+    }
+
+    header,
+    footer {
+        font-size: 11px;
+    }
+
+    header .center {
+        font-size: 14px;
+    }
+
+    /* Ukuran PNG Judul saat dibuka di HP */
+    .title-contact,
+    .title-experience,
+    .title-tools {
+        margin-top: 40px;
+    }
+
+    .title-contact {
+        max-width: 130px;
+    }
+
+    .title-experience {
+        max-width: 180px;
+    }
+
+    .title-tools {
+        max-width: 110px;
+    }
+
+    .works-list {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .work-item:nth-child(4) {
+        transform: translateX(0);
+    }
+
+    .work-number {
+        font-size: 60pt;
+    }
+
+    .works-right {
+        align-items: center;
+        justify-content: center;
+        /* Di HP ditengahin lagi */
+        margin-top: 60px;
+        padding-bottom: 0;
+    }
+
+    .selected-text,
+    .works-text {
+        font-size: 70px;
+        margin-right: 0;
+    }
+
+    /* Penyesuaian gambar latar di HP */
+    .pattern-bg {
+        bottom: -20px;
+        right: -20px;
+        width: 450px;
+        max-width: 90vw;
+        opacity: 0.4;
+        /* Agak diburamkan agar teks nomor kebaca */
+    }
+}
+
+/* =========================================
+   DIPINDAHKAN DARI <style> INLINE DI index.html
+   ========================================= */
+
+
+        #loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: #ffffff; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 1.2s ease, filter 1.2s ease, visibility 1.2s;
+        }
+
+        .loading-text {
+            color: #070913;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px; 
+            font-weight: 500;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            animation: pulseText 1.2s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulseText {
+            0% { opacity: 0.2; }
+            100% { opacity: 1; }
+        }
+
+        .hide-loading {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        body {
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        #main-wrapper {
+            filter: blur(15px);
+            opacity: 0; 
+            transition: filter 1.5s ease, opacity 1.5s ease;
+        }
+
+        /* Class saat loading selesai */
+        .content-loaded {
+            filter: blur(0px) !important;
+            opacity: 1 !important;
+        }
+
+        /* 1. Animasi glow breathing */
+        @keyframes glowBreathing {
+            0% { opacity: 0.4; transform: scale(1); }
+            100% { opacity: 1; transform: scale(1.15); }
+        }
+
+        /* Container galeri */
+        .glow-gallery {
+            position: relative;
+            padding: 80px 5% 120px;
+            background-color: #070913; 
+            overflow: hidden; 
+        }
+
+        /* Lapisan khusus untuk efek glow animasi */
+        .glow-gallery::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: 
+                radial-gradient(circle at top left, rgba(18, 43, 115, 0.8) 0%, transparent 45%),
+                radial-gradient(circle at bottom right, rgba(18, 43, 115, 0.6) 0%, transparent 45%);
+            z-index: 0; 
+            animation: glowBreathing 4s ease-in-out infinite alternate;
+        }
+
+        /* 2. Animasi kilatan cahaya putih (Shine Effect) di dalam border */
+        @keyframes shineEffect {
+            0% { left: -150%; }
+            20% { left: 200%; } 
+            100% { left: 200%; } 
+        }
+
+        /* 3. Animasi HP Mengambang (Naik Turun) */
+        @keyframes floatNormal {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); } 
+        }
+        
+        @keyframes floatLarge {
+            0%, 100% { transform: scale(2.5) translateY(0); }
+            50% { transform: scale(2.5) translateY(-8px); } 
+        }
+
+        .hp-float-normal {
+            animation: floatNormal 4s ease-in-out infinite;
+        }
+
+        .hp-float-large {
+            animation: floatLarge 5s ease-in-out infinite;
+        }
+
+        /* Class BUNGKUS GAMBAR POSTER (RASIO 4:5 STANDAR INSTAGRAM) */
+        .gallery-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 4 / 5; 
+            border-radius: 16px; 
+            border: 1.5px solid rgba(255, 255, 255, 0.6); 
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6); 
+            overflow: hidden; 
+            transition: transform 0.3s ease; 
+        }
+        .gallery-wrapper:hover {
+            transform: translateY(-8px);
+        }
+        .gallery-wrapper::after {
+            content: "";
+            position: absolute;
+            top: 0; left: -150%;
+            width: 50%; height: 100%;
+            background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
+            transform: skewX(-25deg);
+            animation: shineEffect 6s infinite;
+        }
+        
+        .gallery-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+            display: block;
+        }
+
+        /* Class BUNGKUS BRACKET PANJANG */
+        .bracket-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 1000px; 
+            margin: 0 auto; 
+            border-radius: 16px; 
+            border: 1.5px solid rgba(255, 255, 255, 0.6); 
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6); 
+            overflow: hidden; 
+            transition: transform 0.3s ease; 
+        }
+        .bracket-wrapper:hover {
+            transform: translateY(-8px);
+        }
+        .bracket-wrapper::after {
+            content: "";
+            position: absolute;
+            top: 0; left: -150%;
+            width: 50%; height: 100%;
+            background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
+            transform: skewX(-25deg);
+            animation: shineEffect 6s infinite;
+        }
+        .bracket-img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+/* =========================================
+   CLASS HASIL PEMISAHAN DARI ATRIBUT style="" INLINE
+   ========================================= */
+
+.detail-section {
+    background-color: #070913;
+    color: #ffffff;
+}
+
+.detail-hero-band {
+    background-color: #0526e3;
+    position: relative;
+    overflow: hidden;
+    padding: 80px 5%;
+    min-height: 250px;
+    display: flex;
+    align-items: center;
+}
+
+.detail-hero-number-img {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 100%;
+    width: auto;
+    z-index: 1;
+}
+
+.detail-hero-title {
+    position: relative;
+    z-index: 2;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 80px;
+    line-height: 0.9;
+    letter-spacing: -2px;
+    margin: 0;
+    color: #ffffff;
+    padding-left: 180px;
+}
+
+.detail-01-content-bg {
+    position: relative;
+    background-image: url('Group\ 5.webp');
+    background-size: cover;
+    background-position: center;
+    padding: 80px 5%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+    overflow: hidden;
+}
+
+.detail-01-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0);
+    z-index: 1;
+}
+
+.detail-content-col {
+    position: relative;
+    z-index: 2;
+    padding-right: 20px;
+}
+
+.detail-project-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 48px;
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.detail-project-subtitle {
+    font-size: 14px;
+    color: #d1d5db;
+    margin-bottom: 40px;
+    letter-spacing: 0.5px;
+}
+
+.detail-heading {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #ffffff;
+}
+
+.detail-text {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #a0a5b5;
+    margin-bottom: 30px;
+    max-width: 550px;
+}
+
+.detail-tools-row {
+    display: flex;
+    gap: 15px;
+}
+
+.detail-tool-icon {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    border-radius: 12px;
+}
+
+.gallery-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 24px;
+}
+
+.detail-02-content-bg {
+    position: relative;
+    background-image: url('Group\ 1.webp');
+    background-size: cover;
+    background-position: center;
+    padding: 100px 5%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.detail-02-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.1);
+    z-index: 1;
+}
+
+.gallery-inner-col {
+    position: relative;
+    z-index: 1;
+    max-width: 1300px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.detail-03-content-bg {
+    position: relative;
+    background-image: url('Group 6.webp');
+    background-size: cover;
+    background-position: center;
+    padding: 100px 5%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.detail-03-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 1;
+}
+
+.link-plain {
+    text-decoration: none;
+    color: inherit;
+}
+
+.no-margin-top {
+    margin-top: 0;
+}
+
+/* =========================================
+   RESPONSIVE UNTUK DETAIL PROJECT & GALLERY (TABLET & HP)
+   ========================================= */
+@media (max-width: 900px) {
+    .detail-hero-band {
+        padding: 40px 24px;
+        min-height: 160px;
+    }
+
+    .detail-hero-number-img {
+        height: 70%;
+        opacity: 0.35;
+    }
+
+    .detail-hero-title {
+        font-size: 40px;
+        line-height: 1;
+        letter-spacing: -1px;
+        padding-left: 0;
+    }
+
+    .detail-01-content-bg,
+    .detail-02-content-bg,
+    .detail-03-content-bg {
+        grid-template-columns: 1fr;
+        padding: 50px 24px;
+        gap: 30px;
+    }
+
+    .detail-content-col {
+        padding-right: 0;
+    }
+
+    .detail-project-title {
+        font-size: 32px;
+    }
+
+    .detail-project-subtitle {
+        margin-bottom: 28px;
+    }
+
+    .detail-heading {
+        font-size: 18px;
+    }
+
+    .detail-text {
+        font-size: 14px;
+        max-width: 100%;
+        margin-bottom: 24px;
+    }
+
+    .glow-gallery {
+        padding: 50px 24px 70px;
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 16px;
+    }
+}
+
+/* =========================================
+   RESPONSIVE TAMBAHAN UNTUK LAYAR HP KECIL
+   ========================================= */
+@media (max-width: 480px) {
+    .detail-hero-band {
+        padding: 32px 20px;
+        min-height: 130px;
+    }
+
+    .detail-hero-title {
+        font-size: 28px;
+    }
+
+    .detail-01-content-bg,
+    .detail-02-content-bg,
+    .detail-03-content-bg {
+        padding: 40px 20px;
+    }
+
+    .detail-project-title {
+        font-size: 26px;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+}
